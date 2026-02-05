@@ -40,7 +40,8 @@ export default function App() {
         <p>У меня есть к тебе один вопрос</p>
         <button
           onTouchStart={() => setStep(2)}
-          onClick={() => setStep(2)}>
+          // onClick={() => setStep(2)}
+        >
           Продолжить
         </button>
       </div>
@@ -55,7 +56,9 @@ export default function App() {
         <div className="heart-slot">
           <div
             className="heart-big"
-            style={{ ['--scale' as any]: 1 + beats * 0.08 } as React.CSSProperties}
+            style={
+              { ['--scale' as any]: 1 + beats * 0.08 } as React.CSSProperties
+            }
             onTouchStart={() => {
               setBeats(v => {
                 if (v + 1 >= 12) {
@@ -65,15 +68,16 @@ export default function App() {
                 return v + 1;
               });
             }}
-            onClick={() => {
-              setBeats(v => {
-                if (v + 1 >= 12) {
-                  setStep(3);
-                  return v;
-                }
-                return v + 1;
-              });
-            }}>
+            // onClick={() => {
+            //   setBeats(v => {
+            //     if (v + 1 >= 12) {
+            //       setStep(3);
+            //       return v;
+            //     }
+            //     return v + 1;
+            //   });
+            // }}
+          >
             <span className="heart-text">ЖМИ</span>
           </div>
         </div>
@@ -130,16 +134,17 @@ export default function App() {
                       setTimeout(() => setWrong(false), 300);
                     }
                   }}
-                  onClick={() => {
-                    if (w === nextWord) {
-                      setPlaced(p => [...p, w]);
-                      setShuffled(s => s.filter(x => x !== w));
-                      setWrong(false);
-                    } else {
-                      setWrong(true);
-                      setTimeout(() => setWrong(false), 300);
-                    }
-                  }}>
+                  // onClick={() => {
+                  //   if (w === nextWord) {
+                  //     setPlaced(p => [...p, w]);
+                  //     setShuffled(s => s.filter(x => x !== w));
+                  //     setWrong(false);
+                  //   } else {
+                  //     setWrong(true);
+                  //     setTimeout(() => setWrong(false), 300);
+                  //   }
+                  // }}
+                >
                   {w}
                 </span>
               ))}
@@ -150,14 +155,15 @@ export default function App() {
         {completed && (
           <div className="final soft">
             <img
-              src="/public/kitty.png"
+              src="/kitty.png"
               alt="котик"
               className="kitty"
             />
             <h1>Будешь моим Валентином, Динара? 💖</h1>
             <button
               onTouchStart={() => setStep(4)}
-              onClick={() => setStep(4)}>
+              // onClick={() => setStep(4)}
+            >
               Да
             </button>
           </div>
