@@ -155,7 +155,7 @@ export default function App() {
         {completed && (
           <div className="final soft">
             <img
-              src="/kitty.png"
+              src="/valentines2026/kitty.png"
               alt="котик"
               className="kitty"
             />
