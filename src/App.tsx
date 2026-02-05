@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 const correct = ['Будешь', 'моим', 'Валентином', 'Динара?'];
-const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
+const shuffle = (arr: string[]) => [...arr].sort(() => Math.random() - 0.5);
 
 export default function App() {
   const [step, setStep] = useState(1);
   const [beats, setBeats] = useState(0);
 
-  const [placed, setPlaced] = useState([]);
-  const [shuffled, setShuffled] = useState([]);
+  const [placed, setPlaced] = useState<string[]>([]);
+  const [shuffled, setShuffled] = useState<string[]>([]);
   const [wrong, setWrong] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function App() {
       heart.className = 'bg-heart';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.animationDuration = 8 + Math.random() * 6 + 's';
-      heart.style.opacity = Math.random() * 0.5 + 0.2;
+      heart.style.opacity = (Math.random() * 0.5 + 0.2).toString();
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 14000);
     }, 700);
@@ -55,7 +55,7 @@ export default function App() {
         <div className="heart-slot">
           <div
             className="heart-big"
-            style={{ '--scale': 1 + beats * 0.08 }}
+            style={{ ['--scale' as any]: 1 + beats * 0.08 } as React.CSSProperties}
             onTouchStart={() => {
               setBeats(v => {
                 if (v + 1 >= 12) {
